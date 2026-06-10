@@ -53,8 +53,8 @@ main()
         elif [ "x"$1 == "xinstall" ]; then
                 kernel_install
                 exit 0
-        elif 
-		"Error:"
+        else
+		"Error: (clean | make | install)"
 		exit 1
 	fi
 }
