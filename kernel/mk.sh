@@ -9,7 +9,6 @@ kernel_clean()
         rm -rf target
         cd linux-2.6.35.6
         make distclean
-        make clean
         cd -
         echo "clean linux-2.6.35.6 finished ..."
 }
@@ -18,16 +17,13 @@ kernel_build()
 {
         echo "make linux-2.6.35.6 start ... ..."
         rm -rf build
-        rm -rf target
         mkdir build 
-        mkdir -p target/boot 
         cd linux-2.6.35.6
         make distclean
         make clean
         make O=../build x86_64_defconfig 
+        #make O=../build LOCALVERSION= -j$(nproc) 
         make O=../build -j$(nproc) 
-        #make O=../build INSTALL_MOD_PATH=../target modules_install
-        #cp -arf ../build/arch/x86/boot  ../target/boot
         cd -
         echo "make linux-2.6.35.6 finished ..." 
 }
@@ -35,9 +31,11 @@ kernel_build()
 kernel_install()
 {
         echo "install linux-2.6.35.6 start ... ..."
+        rm -rf target
+	mkdir -p target/boot
         cd linux-2.6.35.6
         make O=../build INSTALL_MOD_PATH=../target modules_install
-        cp -arf ../build/arch/x86/boot/bzImage ../target/boot
+        cp -arf ../build/arch/x86_64/boot/bzImage ../target/boot
         cd -
         echo "install linux-2.6.35.6 finished ..." 
 }
@@ -54,7 +52,7 @@ main()
                 kernel_install
                 exit 0
         else
-		"Error: (clean | make | install)"
+		echo "Usage: (clean | make | install)"
 		exit 1
 	fi
 }
