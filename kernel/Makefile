@@ -39,7 +39,7 @@ config:
 # 3. 编译内核
 bzImage:
 	mkdir -p $(BUILD_DIR)
-	$(KERNEL_MAKE) -j$(nproc) $(MAKE_EXTRA)
+	$(KERNEL_MAKE) bzImage -j$(nproc) $(MAKE_EXTRA)
 
 # 4. 编译模块
 modules:
