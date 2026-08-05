@@ -111,12 +111,12 @@ main()
             ;;
         *)
             echo "使用方式："
-            echo "  ./mk.sh clean      仅清理编译产物"
-            echo "  ./mk.sh config     仅导入.config配置"
-            echo "  ./mk.sh bzImage    仅编译内核镜像"
-            echo "  ./mk.sh modules    仅编译驱动模块"
-            echo "  ./mk.sh install    仅安装模块+拷贝bzImage"
-            echo "  ./mk.sh            一键完整构建：clean -> config -> bzImage -> modules -> install"
+            echo "  ./compile.sh clean      仅清理编译产物"
+            echo "  ./compile.sh config     仅导入.config配置"
+            echo "  ./compile.sh bzImage    仅编译内核镜像"
+            echo "  ./compile.sh modules    仅编译驱动模块"
+            echo "  ./compile.sh install    仅安装模块+拷贝bzImage"
+            echo "  ./compile.sh            一键完整构建：clean -> config -> bzImage -> modules -> install"
 	    ;;
     esac
 }
